@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server.js",
-    "test": "nodemon ./node_modules/.bin/jasmine"
+    "test": "jasmine"
   },
   "author": "",
   "license": "ISC",
