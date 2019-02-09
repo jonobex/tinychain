@@ -2,13 +2,8 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"/>
-    <style>
-        .hide {
-            display: none;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css" />
 </head>
 
 <body>
@@ -20,8 +15,56 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+
+    <span id="toast" class="toast">Wallet not found.</span>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <h2>Wallet</h2>
+            <form>
+                <fieldset id="wallet-selector">
+                    <legend>Wallet</legend>
+                    <label for="wallet-id">Address</label>
+                    <input type="text" id="wallet-id" /><br />
+                    <label for="wallet-secret">Key</label>
+                    <input type="text" id="wallet-secret" />
+                    <div class="button-group">
+                        <input id="load-wallet" type="button" value="Load" />
+                        <input id="new-wallet" type="button" value="New" />
+                    </div>
+                </fieldset>
+                <fieldset id="create-transaction">
+                    <legend>Create Transaction</legend>
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" />
+                    <label for="amount">Amount</label>
+                    <input type="text" id="amount" />
+                    <div class="button-group">
+                        <input id="send" class="primary" type="button" value="Send" />
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h2>Miner</h2>
+            <div id="mining-in-progress" class="card">
+                <p style="display: table">
+                    <span class="spinner primary"></span>
+                    <span style="display:table-cell;vertical-align:middle">Mining a block...</span>
+                </p>
+            </div>
+            <div class="button-group">
+                <input type="button" id="mine" value="Mine" />
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="card">
+                <h2>Chain Explorer</h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </body>
 

@@ -21,7 +21,7 @@ blockchain.create(chain => {
         let counter = 0;
         let blocks = chain.mine(data.address);
 
-        while (counter < 10000 && blocks === null) {
+        while (counter < 1000 && blocks === null) {
             blocks = chain.mine(data.address);
             counter++;
         }
@@ -41,6 +41,9 @@ blockchain.create(chain => {
         response.send(chain);
     });
 
+    app.get('/wallets', (request,response) => {
+        response.send(chain.wallets);
+    });
     app.get('/wallet/new', (request, response) => {
         response.send(blockchain.wallet.create());
     });
@@ -49,13 +52,16 @@ blockchain.create(chain => {
         let wallet = blockchain.wallet.load(data.source, data.key);
         response.send(JSON.stringify(wallet.transaction(data.destination, data.amount)));
     });
+    app.get('wallet/:walletId', (request, response) => {
+        console.log(chain.wallets[request.walletId]);
+        response.send(chain.wallets[request.walletId]);
+    });
     app.post('/transaction', (request, response) => {
-        let data = request.body;
-        chain.addTransaction(forge.util.encode64(JSON.stringify({
-            source: data.source,
-            destination: data.destination,
-            signature: data.signature
-        })));
+        try {
+            chain.addTransaction(request.body.data);
+        } catch (err) {
+            response.status(500).send(err.message);
+        }
         response.send(chain);
     });
     app.listen(PORT, () => {
