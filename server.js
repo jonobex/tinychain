@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static('static'));
 
 blockchain.create(chain => {
-    
+
     app.get('/chains/test', (request, response) => {
         response.send(JSON.stringify(chain, null, 4));
     });
@@ -54,6 +54,7 @@ blockchain.create(chain => {
     });
     app.post('/transaction', (request, response) => {
         let data = request.body;
+        console.log(data);
         chain.addTransaction(forge.util.encode64(JSON.stringify({
             source: data.source,
             destination: data.destination,
