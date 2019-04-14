@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const blockchain = require('.');
+const forge = require('node-forge');
 
 const app = express(),
     PORT = 3030;
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static('static'));
 
 blockchain.create(chain => {
+    
     app.get('/chains/test', (request, response) => {
         response.send(JSON.stringify(chain, null, 4));
     });
@@ -38,6 +40,7 @@ blockchain.create(chain => {
         response.send(chain);
     });
     app.get("/chain.json", (request, response) => {
+        response.setHeader('Content-Type', 'application/json');
         response.send(chain);
     });
 

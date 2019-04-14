@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css" />
     <style>
         .hide {
             display: none;
@@ -12,16 +12,60 @@
 </head>
 
 <body>
-    <div class="row">
+    <div class="container">
+        <h1>Basic Blockchain</h1>
+        <p>Create your own blockchain! Share it with your friends!</p>
+        <p>This interface manages the chain and provides a simple wallet</p>
+    </div>
+
+    <div class="container">
+        <h2>Wallet</h2>
+        <div class="row">
+            <div class="col-sm">
+                <div class="button-group">
+                    <!-- Controls -->
+                    <input type="button" id="create_button" value="Create"></input>
+                    <input type="button" id="sign_button" value="Sign"></input>
+                    <input type="button" id="send_button" value="Send"></input>
+                </div>
+            </div>
+            <div class="input-group col-sm">
+                <!-- Information -->
+                <label for="wallet_id">Address</label>
+                <input id="wallet_id"></input>
+                <label for="wallet_secret">Secret</label>
+                <input id="wallet_secret"></input>
+                <label for="destination">Destination</label>
+                <input type="text" id="destination"></input>
+                <label for="amount">Amount</label>
+                <input type="text" id="amount"></input>
+            </div>
+
+            <div class="card">
+                <textarea id="transaction_data" rows="12" cols="40"></textarea>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <h2>Miner</h2>
+        <input type="button" id="mine_button" value="Mine"></input>
+        <div id="mining" class="hide spinner"></div>
+        <span id="mine_ok" class="hide toast">Block Mined!</span>
+        <span id="mine_fail" class="hide toast">Mining Failed :(</span>
+    </div>
+
+    <div class="container">
+        <h2>BlockChain</h2>
+        <table id="chain_blocks"></table>
         <div class="container">
-            <h1>Basic Blockchain</h1>
-            <p>Create your own blockchain! Share it with your friends!</p>
-            <p>This interface manages the chain and provides a simple wallet</p>
+            <a href="chain.json">Download...</a>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </body>
 
